@@ -28,6 +28,9 @@ final BorderRadius radiusAll10 = BorderRadius.circular(10.0);
 final BorderRadius radiusAll12 = BorderRadius.circular(12.0);
 final BorderRadius radiusAll16 = BorderRadius.circular(16.0);
 final BorderRadius radiusAll24 = BorderRadius.circular(24.0);
+final BorderRadius radiusAll28 = BorderRadius.circular(28.0);
+final BorderRadius radiusAll32 = BorderRadius.circular(32.0);
+final BorderRadius radiusAll36 = BorderRadius.circular(36.0);
 final BorderRadius radiusAll20 = BorderRadius.circular(20.0);
 
 const double moneyTextSize = 22.0;

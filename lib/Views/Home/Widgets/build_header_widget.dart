@@ -12,11 +12,10 @@ class BuildHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: Get.height * .7,
       width: Get.width,
       child: Stack(
-        clipBehavior: Clip.none,
         children: [
           Align(
             alignment: Alignment.topRight,

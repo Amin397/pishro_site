@@ -14,7 +14,7 @@ class BuildCompanyInfo extends StatelessWidget {
       height: Get.height * .4,
       padding: paddingSymmetricH30,
       decoration: BoxDecoration(
-        color: textYColor,
+        color: mainYellowBgColor,
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(.2),
