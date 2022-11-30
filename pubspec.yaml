@@ -81,7 +81,7 @@ flutter:
   fonts:
     - family: cinema
       fonts:
-        - asset: assets/font/Cinema.ttf
+        - asset: assets/font/cinema_font.ttf
 
 #  assets:
 #    -assets/image/

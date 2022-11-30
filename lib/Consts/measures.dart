@@ -59,11 +59,11 @@ void showError({
   Get.snackbar(
     'Error',
     errorMessage!,
-    leftBarIndicatorColor: mainColor,
+    leftBarIndicatorColor: mainBgColor,
     snackStyle: SnackStyle.FLOATING,
     snackPosition: SnackPosition.BOTTOM,
 // borderRadius: 10.0,
-    backgroundColor: mainColor.withOpacity(.2),
+    backgroundColor: mainBgColor.withOpacity(.2),
     margin: EdgeInsets.only(
       bottom: Get.height * .15,
     ),
