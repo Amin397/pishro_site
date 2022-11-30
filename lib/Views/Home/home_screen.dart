@@ -3,6 +3,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import '../../Consts/colors.dart';
 import '../../Controllers/Home/home_controller.dart';
+import 'Widgets/build_company_info.dart';
 import 'Widgets/build_header_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,7 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               // _buildHeader(),
-              BuildHeaderWidget(controller: controller)
+              BuildHeaderWidget(
+                controller: controller,
+              ),
+              const BuildCompanyInfo(),
             ],
           ),
         ),

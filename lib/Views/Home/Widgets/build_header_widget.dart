@@ -40,7 +40,7 @@ class BuildHeaderWidget extends StatelessWidget {
             ),
           ),
           _buildHeaderImage(),
-          _buildHeaderPishroText()
+          _buildHeaderPishroText(),
         ],
       ),
     );
