@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../Consts/colors.dart';
 import '../../Controllers/Home/home_controller.dart';
 import 'Widgets/build_company_info.dart';
+import 'Widgets/build_future_widget.dart';
 import 'Widgets/build_header_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -31,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 controller: controller,
               ),
               const BuildCompanyInfo(),
+              const BuildFutureWidget()
             ],
           ),
         ),

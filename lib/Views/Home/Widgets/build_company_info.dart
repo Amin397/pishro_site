@@ -76,7 +76,7 @@ class BuildCompanyInfo extends StatelessWidget {
                     'در سال ۱۳۹۷، جمع شدیم تا از تجربه‌های‌مان در حوزه فرهنگ و فناوری اطلاعات برای ایجاد، توسعه و سرمایه‌گذاری در کسب‌وکارهای هوشمند در حوزه هنر و فرهنگ و ارائه خدمات در این زمینه استفاده کنیم.',
                     style: TextStyle(
                       color: textPColor,
-                      fontSize: 18.0,
+                      fontSize: 20.0,
                     ),
                   ),
                 ),
