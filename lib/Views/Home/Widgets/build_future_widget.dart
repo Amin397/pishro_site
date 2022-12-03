@@ -28,7 +28,7 @@ class BuildFutureWidget extends StatelessWidget {
     return Flexible(
       flex: 1,
       child: Container(
-        padding: paddingAll24,
+        padding: paddingAll32,
         height: double.maxFinite,
         width: double.maxFinite,
         child: const AnimationConfiguration.synchronized(
@@ -38,7 +38,7 @@ class BuildFutureWidget extends StatelessWidget {
             child: FadeInAnimation(
               child: Image(
                 image: AssetImage(
-                  'assets/image/image_company_info.png',
+                  'assets/image/image_future.png',
                 ),
               ),
             ),

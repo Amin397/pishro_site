@@ -34,4 +34,21 @@ class HomeController extends GetxController {
       title: 'کودکان چگونه\n یاد میگیرند',
     ),
   ];
+
+  void onHover({required ArticleModel article}) {
+    for (var element in articlesList) {
+      element.isSelected(false);
+    }
+
+
+    article.isSelected(true);
+
+
+  }
+
+  void onExit() {
+    for (var element in articlesList) {
+      element.isSelected(false);
+    }
+  }
 }
