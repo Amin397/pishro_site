@@ -29,7 +29,7 @@ class BuildHeaderWidget extends StatelessWidget {
                 image: const AssetImage(
                   'assets/image/shape1.png',
                 ),
-                height: Get.height * .3,
+                height: Get.height * .25,
                 // width: Get.width * .5,
               ),
             ),
