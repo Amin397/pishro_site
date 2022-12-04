@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 
 import '../../Controllers/Articles/single_article_one_controller.dart';
 import '../Home/Widgets/build_footer_widget.dart';
+import 'Widgets/build_article_middle_image_widget.dart';
 import 'Widgets/build_first_text_widget.dart';
+import 'Widgets/build_last_text_widget.dart';
 import 'Widgets/build_single_article_header_one_widget.dart';
 
 class SingleArticleOneScreen extends StatelessWidget {
@@ -26,6 +28,11 @@ class SingleArticleOneScreen extends StatelessWidget {
                 controller: controller,
               ),
               const BuildFirstTextWidget(),
+              const BuildArticleMiddleImageWidget(),
+              SizedBox(
+                height: Get.height * .1,
+              ),
+              const BuildLastTextWidget(),
               const BuildFooterWidget(),
             ],
           ),
