@@ -82,6 +82,9 @@ flutter:
     - family: cinema
       fonts:
         - asset: assets/font/cinema_font.ttf
+    - family: koodak
+      fonts:
+        - asset: assets/font/koodak.ttf
 
 #  assets:
 #    -assets/image/

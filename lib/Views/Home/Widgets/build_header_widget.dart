@@ -10,8 +10,8 @@ import 'package:pishro_site/Consts/measures.dart';
 import 'package:pishro_site/Controllers/Home/home_controller.dart';
 import 'package:pishro_site/Utils/responsive.dart';
 
-class BuildHeaderWidget extends StatelessWidget {
-  const BuildHeaderWidget({Key? key, required this.controller})
+class BuildHomeHeaderWidget extends StatelessWidget {
+  const BuildHomeHeaderWidget({Key? key, required this.controller})
       : super(key: key);
   final HomeController controller;
 
@@ -48,7 +48,6 @@ class BuildHeaderWidget extends StatelessWidget {
             _buildHeaderPishroTextMobile(),
           ],
         ),
-        tablet: SizedBox(),
         desktop: Stack(
           children: [
             Align(

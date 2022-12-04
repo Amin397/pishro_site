@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               // _buildHeader(),
-              BuildHeaderWidget(
+              BuildHomeHeaderWidget(
                 controller: controller,
               ),
               const BuildCompanyInfo(),
@@ -40,9 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
               BuildArticlesWidget(
                 controller: controller,
               ),
-              BuildFooterWidget(
-                  controller:controller
-              )
+              const BuildFooterWidget()
             ],
           ),
         ),

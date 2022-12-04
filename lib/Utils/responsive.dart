@@ -4,11 +4,10 @@ import 'package:get/get.dart';
 
 
 class Responsive extends StatelessWidget {
-  const Responsive({Key? key , required this.desktop , required this.mobile , required this.tablet}) : super(key: key);
+  const Responsive({Key? key , required this.desktop , required this.mobile}) : super(key: key);
 
 
   final Widget mobile;
-  final Widget tablet;
   final Widget desktop;
 
 
@@ -22,8 +21,6 @@ class Responsive extends StatelessWidget {
       builder: (BuildContext context , BoxConstraints constraints){
         if(constraints.maxWidth >= 1100.0){
           return desktop;
-        }else if(constraints.maxWidth >= 650.0){
-          return tablet;
         }else{
           return mobile;
         }

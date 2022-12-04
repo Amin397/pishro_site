@@ -15,7 +15,7 @@ void main() {
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: PageRout.pages,
-      // initialRoute: NameRouts.home,
+      initialRoute: NameRouts.home,
       home: HomeScreen(),
       theme: ThemeData(
         fontFamily: 'cinema',

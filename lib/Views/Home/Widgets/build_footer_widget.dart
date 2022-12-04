@@ -10,9 +10,8 @@ import '../../../Consts/colors.dart';
 import '../../../Controllers/Home/home_controller.dart';
 
 class BuildFooterWidget extends StatelessWidget {
-  const BuildFooterWidget({Key? key, required this.controller})
+  const BuildFooterWidget({Key? key,})
       : super(key: key);
-  final HomeController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,22 @@ class BuildFooterWidget extends StatelessWidget {
               ],
             ),
           ),
-          desktop: SizedBox(
+          desktop: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  textPColor.withOpacity(.5),
+                  textPColor.withOpacity(.3),
+                  textPColor.withOpacity(.2),
+                  textPColor.withOpacity(.1),
+                  textPColor.withOpacity(.05),
+                  textPColor.withOpacity(.01),
+                  Colors.transparent,
+                ],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+              )
+            ),
             width: Get.width,
             height: Get.height * .5,
             child: Row(
@@ -42,7 +56,6 @@ class BuildFooterWidget extends StatelessWidget {
               ],
             ),
           ),
-          tablet: Container(),
         ),
       ),
     );

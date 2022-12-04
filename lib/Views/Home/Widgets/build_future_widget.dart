@@ -24,7 +24,6 @@ class BuildFutureWidget extends StatelessWidget {
             _buildText(),
           ],
         ),
-        tablet: SizedBox(),
       ),
     );
   }
@@ -106,30 +105,27 @@ class BuildFutureWidget extends StatelessWidget {
   }
 
   Widget _buildTextMobile() {
-    return Flexible(
-      flex: 1,
-      child: Container(
-        padding: const EdgeInsets.all(12.0),
-        height: double.maxFinite,
-        width: double.maxFinite,
-        child: Column(
-          children: [
-            _buildParagraphMobile(
-              title: 'چشم انداز',
-              text:
-                  'ما جهانی در نظر داریم که هر شهروند ایرانی با استفاده از فناوری هوشمند بتواند مصرف فرهنگی، هنری و آموزشی خود را افزایش دهد، آن را بهینه و هوشمندتر کند.',
-            ),
-            // SizedBox(
-            //   height: Get.height * .05,
-            // ),
-            _buildImageMobile(),
-            _buildParagraphMobile(
-              title: 'ماموریت',
-              text:
-                  'تلاش می‌کنیم براساس جدیدترین روش‌های ذائقه‌سنجی، برای گروه‌های مختلف اجتماعی، محتوا و پلت‌فرم‌های متناسب طراحی، انتخاب و تولید ‌کنیم.',
-            ),
-          ],
-        ),
+    return Container(
+      padding: const EdgeInsets.all(12.0),
+      height: double.maxFinite,
+      width: double.maxFinite,
+      child: Column(
+        children: [
+          _buildParagraphMobile(
+            title: 'چشم انداز',
+            text:
+                'ما جهانی در نظر داریم که هر شهروند ایرانی با استفاده از فناوری هوشمند بتواند مصرف فرهنگی، هنری و آموزشی خود را افزایش دهد، آن را بهینه و هوشمندتر کند.',
+          ),
+          // SizedBox(
+          //   height: Get.height * .05,
+          // ),
+          _buildImageMobile(),
+          _buildParagraphMobile(
+            title: 'ماموریت',
+            text:
+                'تلاش می‌کنیم براساس جدیدترین روش‌های ذائقه‌سنجی، برای گروه‌های مختلف اجتماعی، محتوا و پلت‌فرم‌های متناسب طراحی، انتخاب و تولید ‌کنیم.',
+          ),
+        ],
       ),
     );
   }

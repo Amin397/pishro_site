@@ -18,8 +18,8 @@ class BuildArticlesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: Get.width,
-      height:(Responsive.isMobile())?Get.height * .38: Get.height * .45,
-      padding:(Responsive.isMobile())?EdgeInsets.zero: paddingSymmetricH30,
+      height: (Responsive.isMobile()) ? Get.height * .38 : Get.height * .45,
+      padding: (Responsive.isMobile()) ? EdgeInsets.zero : paddingSymmetricH30,
       decoration: BoxDecoration(
         color: mainYellowBgColor,
         boxShadow: [
@@ -43,7 +43,6 @@ class BuildArticlesWidget extends StatelessWidget {
             _buildArticlesList(),
           ],
         ),
-        tablet: Container(),
       ),
     );
   }
@@ -157,14 +156,13 @@ class BuildArticlesWidget extends StatelessWidget {
     );
   }
 
-
   Widget _buildArticlesListMobile() {
     return Expanded(
       child: Stack(
         clipBehavior: Clip.none,
         children: [
           Positioned(
-            bottom: - Get.height * .08,
+            bottom: -Get.height * .08,
             child: Container(
               padding: paddingSymmetricH8,
               height: Get.height * .38,
@@ -197,101 +195,112 @@ class BuildArticlesWidget extends StatelessWidget {
     required ArticleModel article,
   }) {
     return MouseRegion(
-      onEnter: (event){
-        controller.onHover(article:article);
+      onEnter: (event) {
+        controller.onHover(article: article);
       },
-      onExit: (_){
+      onExit: (_) {
         controller.onExit();
       },
-      child: AnimationConfiguration.synchronized(
-        duration: const Duration(milliseconds: 1500),
-        child: ScaleAnimation(
-          curve: Curves.linearToEaseOut,
-          child: FadeInAnimation(
-            child: Obx(() => AnimatedContainer(
-              duration: const Duration(milliseconds: 370),
-              height: (article.isSelected.isTrue)?Get.height * .45:Get.height * .4,
-              width: (article.isSelected.isTrue)?Get.width * .14:Get.width * .12,
-              decoration: BoxDecoration(
-                color: textPColor,
-                borderRadius: radiusAll36,
-                boxShadow: shadow(),
-              ),
-              child: Column(
-                children: [
-                  Flexible(
-                    flex: 3,
-                    child: Container(
-                      height: double.maxFinite,
-                      width: double.maxFinite,
-                      margin: paddingAll16,
-                      decoration: BoxDecoration(
-                        color: articlesBgColor,
-                        borderRadius: radiusAll36,
-                      ),
-                      child: Center(
-                        child: Image(
-                          image: AssetImage(
-                            article.image,
+      child: InkWell(
+        onTap: () {
+          controller.goToArticle(
+            article: article,
+          );
+        },
+        child: AnimationConfiguration.synchronized(
+          duration: const Duration(milliseconds: 1500),
+          child: ScaleAnimation(
+            curve: Curves.linearToEaseOut,
+            child: FadeInAnimation(
+              child: Obx(() => AnimatedContainer(
+                    duration: const Duration(milliseconds: 370),
+                    height: (article.isSelected.isTrue)
+                        ? Get.height * .45
+                        : Get.height * .4,
+                    width: (article.isSelected.isTrue)
+                        ? Get.width * .14
+                        : Get.width * .12,
+                    decoration: BoxDecoration(
+                      color: textPColor,
+                      borderRadius: radiusAll36,
+                      boxShadow: shadow(),
+                    ),
+                    child: Column(
+                      children: [
+                        Flexible(
+                          flex: 3,
+                          child: Container(
+                            height: double.maxFinite,
+                            width: double.maxFinite,
+                            margin: paddingAll16,
+                            decoration: BoxDecoration(
+                              color: articlesBgColor,
+                              borderRadius: radiusAll36,
+                            ),
+                            child: Center(
+                              child: Image(
+                                image: AssetImage(
+                                  article.image,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    flex: 2,
-                    child: SizedBox(
-                      height: double.maxFinite,
-                      width: double.maxFinite,
-                      child: Column(
-                        children: [
-                          Flexible(
-                            flex: 1,
-                            child: SizedBox(
-                              height: double.maxFinite,
-                              width: double.maxFinite,
-                              child: Center(
-                                child: AutoSizeText(
-                                  article.title,
-                                  maxFontSize: 36.0,
-                                  maxLines: 2,
-                                  minFontSize: 22.0,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    color: textYColor,
-                                    fontSize: 30.0,
+                        Flexible(
+                          flex: 2,
+                          child: SizedBox(
+                            height: double.maxFinite,
+                            width: double.maxFinite,
+                            child: Column(
+                              children: [
+                                Flexible(
+                                  flex: 1,
+                                  child: SizedBox(
+                                    height: double.maxFinite,
+                                    width: double.maxFinite,
+                                    child: Center(
+                                      child: AutoSizeText(
+                                        article.title,
+                                        maxFontSize: 36.0,
+                                        maxLines: 2,
+                                        minFontSize: 22.0,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          color: textYColor,
+                                          fontSize: 30.0,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
-                          ),
-                          Flexible(
-                            flex: 1,
-                            child: SizedBox(
-                              height: double.maxFinite,
-                              width: double.maxFinite,
-                              child: Center(
-                                child: AutoSizeText(
-                                  article.text,
-                                  maxFontSize: 24,
-                                  maxLines: 3,
-                                  minFontSize: 14.0,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18.0,
+                                Flexible(
+                                  flex: 1,
+                                  child: SizedBox(
+                                    height: double.maxFinite,
+                                    width: double.maxFinite,
+                                    child: Center(
+                                      child: AutoSizeText(
+                                        article.text,
+                                        maxFontSize: 24,
+                                        maxLines: 3,
+                                        minFontSize: 14.0,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18.0,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
-            )),
+                  )),
+            ),
           ),
         ),
       ),
@@ -310,7 +319,7 @@ class BuildArticlesWidget extends StatelessWidget {
             alignment: Alignment.topCenter,
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 500),
-              height:Get.height * .35,
+              height: Get.height * .35,
               width: Get.width * .235,
               decoration: BoxDecoration(
                 color: textPColor.withOpacity(.9),

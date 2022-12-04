@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 
 import '../../Models/Home/article_model.dart';
+import '../../Utils/rout_utils.dart';
+import '../../Views/SingleArticleOne/single_article_one_screen.dart';
 
 class HomeController extends GetxController {
   List<ArticleModel> articlesList = [
@@ -29,7 +31,6 @@ class HomeController extends GetxController {
       id: 3,
       isSelected: false.obs,
       image: 'assets/image/list4.png',
-
       text: 'نظریه های روان شناسی\nدرباره فرایند یادگیری\nکودکان',
       title: 'کودکان چگونه\n یاد میگیرند',
     ),
@@ -40,15 +41,34 @@ class HomeController extends GetxController {
       element.isSelected(false);
     }
 
-
     article.isSelected(true);
-
-
   }
 
   void onExit() {
     for (var element in articlesList) {
       element.isSelected(false);
+    }
+  }
+
+  void goToArticle({required ArticleModel article}) {
+    switch (article.id) {
+      case 0:
+        {
+          Get.toNamed(
+              NameRouts.articleOne,
+          );
+          break;
+        }
+      case 1:
+        {
+          break;
+        }
+      case 2:
+        {
+          break;
+        }
+      default:
+        {}
     }
   }
 }
