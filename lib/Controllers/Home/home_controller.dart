@@ -74,7 +74,12 @@ class HomeController extends GetxController {
           break;
         }
       default:
-        {}
+        {
+          Get.toNamed(
+            NameRouts.articleFour,
+          );
+          break;
+        }
     }
   }
 }
