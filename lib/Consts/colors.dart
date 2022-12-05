@@ -14,3 +14,4 @@ Color mainYellowBgColor = const Color(0xffFECD34);
 Color articlesBgColor = const Color(0xffFADBFF);
 Color mainDarkColor = Colors.blueGrey.shade800;
 Color completeBack = const Color(0xffF0E3CA);
+Color lightYellow = const Color(0xffFBF5C5);

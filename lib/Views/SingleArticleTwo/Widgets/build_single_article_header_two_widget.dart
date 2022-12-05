@@ -1,30 +1,33 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pishro_site/Consts/measures.dart';
-import 'package:pishro_site/Controllers/Articles/single_article_one_controller.dart';
-import 'package:pishro_site/Utils/responsive.dart';
+import 'package:pishro_site/Consts/colors.dart';
+import 'package:pishro_site/Controllers/Articles/single_article_two_controller.dart';
 
-class BuildSingleArticleHeaderOneWidget extends StatelessWidget {
-  const BuildSingleArticleHeaderOneWidget({Key? key, required this.controller})
+import '../../../Consts/measures.dart';
+import '../../../Utils/responsive.dart';
+
+class BuildSingleArticleHeaderTwoWidget extends StatelessWidget {
+  const BuildSingleArticleHeaderTwoWidget({Key? key, required this.controller})
       : super(key: key);
-  final SingleArticleOneController controller;
+
+  final SingleArticleTwoController controller;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: Get.width,
-      height: (Responsive.isMobile()) ? Get.height * .35 : Get.height,
+      height: (Responsive.isMobile()) ? Get.height * .35 : Get.height * .85,
       child: Responsive(
         mobile: const SizedBox(),
         desktop: Stack(
           children: [
             SizedBox(
               width: Get.width,
-              height: Get.height,
+              height: Get.height * .85,
               child: const Image(
                 image: AssetImage(
-                  'assets/image/artOneHeader.png',
+                  'assets/image/secondArtImage.png',
                 ),
                 fit: BoxFit.fill,
               ),
@@ -89,40 +92,40 @@ class BuildSingleArticleHeaderOneWidget extends StatelessWidget {
     );
   }
 
-
   Widget _buildTextBox() {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: Get.width * .08,
-        ),
-        margin: EdgeInsets.symmetric(
-          vertical: Get.height * .15,
-        ),
-        width: Get.width,
-        height: Get.height * .23,
-        color: Colors.white.withOpacity(.8),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: const [
-            AutoSizeText(
-              'چگونه فرزندان‌مان را خشک می‌کنیم؟',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 36.0,
-              ),
+    return Container(
+      height: double.maxFinite,
+      width: Get.width * .25,
+      decoration: BoxDecoration(
+        color: lightYellow.withOpacity(.9),
+        boxShadow: shadow(),
+      ),
+      padding: EdgeInsets.symmetric(
+        vertical: Get.height * .1,
+      ),
+      margin: EdgeInsets.symmetric(
+        horizontal: Get.width * .1,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          AutoSizeText(
+            'هفت گناه کبیرهٔ آموزش اجباری؟',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 36.0,
             ),
-            AutoSizeText(
-              'چرا بازی‌های سرخوشانه برای رشد کودکان بسیار مهم هستند؟',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 32.0,
-              ),
+          ),
+          AutoSizeText(
+            'چرا آموزش‌های سنتی ممکن است منجر به افسردگی در کودکان‌مان شود؟',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 32.0,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
