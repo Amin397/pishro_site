@@ -16,7 +16,7 @@ class BuildSingleArticleHeaderThreeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: Get.width,
       height: Get.height * .9,
       child: Responsive(
@@ -65,11 +65,16 @@ class BuildSingleArticleHeaderThreeWidget extends StatelessWidget {
                 fontSize: 18.0,
               ),
             ),
-            const Text(
-              'خانه',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18.0,
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: const Text(
+                'خانه',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18.0,
+                ),
               ),
             ),
             const SizedBox(),
@@ -125,8 +130,6 @@ class BuildSingleArticleHeaderThreeWidget extends StatelessWidget {
       ),
     );
   }
-
-
 
   Widget _buildHeaderImage() {
     return const Align(
