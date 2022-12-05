@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../Controllers/Articles/single_article_three_controller.dart';
 import '../Home/Widgets/build_footer_widget.dart';
+import 'Widgets/build_first_text_third_art_widget.dart';
 import 'Widgets/build_single_article_header_three_widget.dart';
 
 
@@ -24,6 +25,7 @@ class SingleArticleThreeScreen extends StatelessWidget {
               BuildSingleArticleHeaderThreeWidget(
                 controller: controller,
               ),
+              const BuildFirstTextThirdArtWidget(),
               // const BuildMainTextWidget(),
               // const BuildLastTextWidget(),
               const BuildFooterWidget(),
