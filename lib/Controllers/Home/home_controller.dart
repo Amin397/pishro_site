@@ -68,6 +68,9 @@ class HomeController extends GetxController {
         }
       case 2:
         {
+          Get.toNamed(
+            NameRouts.articleThree,
+          );
           break;
         }
       default:
