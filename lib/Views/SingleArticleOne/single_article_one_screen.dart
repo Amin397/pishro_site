@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pishro_site/Utils/responsive.dart';
 
 import '../../Controllers/Articles/single_article_one_controller.dart';
 import '../Home/Widgets/build_footer_widget.dart';
@@ -30,7 +31,7 @@ class SingleArticleOneScreen extends StatelessWidget {
               const BuildFirstTextWidget(),
               const BuildArticleMiddleImageWidget(),
               SizedBox(
-                height: Get.height * .1,
+                height:(Responsive.isMobile())?Get.height * .05: Get.height * .1,
               ),
               const BuildLastTextWidget(),
               const BuildFooterWidget(),

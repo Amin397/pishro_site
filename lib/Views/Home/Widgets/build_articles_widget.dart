@@ -310,95 +310,102 @@ class BuildArticlesWidget extends StatelessWidget {
   Widget _buildArtItemMobile({
     required ArticleModel article,
   }) {
-    return AnimationConfiguration.synchronized(
-      duration: const Duration(milliseconds: 1500),
-      child: ScaleAnimation(
-        curve: Curves.linearToEaseOut,
-        child: FadeInAnimation(
-          child: Align(
-            alignment: Alignment.topCenter,
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 500),
-              height: Get.height * .35,
-              width: Get.width * .235,
-              decoration: BoxDecoration(
-                color: textPColor.withOpacity(.9),
-                borderRadius: radiusAll36,
-                boxShadow: shadow(),
-              ),
-              child: Column(
-                children: [
-                  Flexible(
-                    flex: 2,
-                    child: Container(
-                      height: double.maxFinite,
-                      width: double.maxFinite,
-                      margin: paddingAll6,
-                      decoration: BoxDecoration(
-                        color: articlesBgColor,
-                        borderRadius: radiusAll36,
-                      ),
-                      child: Center(
-                        child: Image(
-                          image: AssetImage(
-                            article.image,
+    return InkWell(
+      onTap: () {
+        controller.goToArticle(
+          article: article,
+        );
+      },
+      child: AnimationConfiguration.synchronized(
+        duration: const Duration(milliseconds: 1500),
+        child: ScaleAnimation(
+          curve: Curves.linearToEaseOut,
+          child: FadeInAnimation(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 500),
+                height: Get.height * .35,
+                width: Get.width * .235,
+                decoration: BoxDecoration(
+                  color: textPColor.withOpacity(.9),
+                  borderRadius: radiusAll36,
+                  boxShadow: shadow(),
+                ),
+                child: Column(
+                  children: [
+                    Flexible(
+                      flex: 2,
+                      child: Container(
+                        height: double.maxFinite,
+                        width: double.maxFinite,
+                        margin: paddingAll6,
+                        decoration: BoxDecoration(
+                          color: articlesBgColor,
+                          borderRadius: radiusAll36,
+                        ),
+                        child: Center(
+                          child: Image(
+                            image: AssetImage(
+                              article.image,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Flexible(
-                    flex: 2,
-                    child: SizedBox(
-                      height: double.maxFinite,
-                      width: double.maxFinite,
-                      child: Column(
-                        children: [
-                          Flexible(
-                            flex: 1,
-                            child: SizedBox(
-                              height: double.maxFinite,
-                              width: double.maxFinite,
-                              child: Center(
-                                child: AutoSizeText(
-                                  article.title,
-                                  maxFontSize: 30.0,
-                                  maxLines: 2,
-                                  minFontSize: 20.0,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    color: textYColor,
-                                    fontSize: 24.0,
+                    Flexible(
+                      flex: 2,
+                      child: SizedBox(
+                        height: double.maxFinite,
+                        width: double.maxFinite,
+                        child: Column(
+                          children: [
+                            Flexible(
+                              flex: 1,
+                              child: SizedBox(
+                                height: double.maxFinite,
+                                width: double.maxFinite,
+                                child: Center(
+                                  child: AutoSizeText(
+                                    article.title,
+                                    maxFontSize: 30.0,
+                                    maxLines: 2,
+                                    minFontSize: 20.0,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      color: textYColor,
+                                      fontSize: 24.0,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          Flexible(
-                            flex: 1,
-                            child: SizedBox(
-                              height: double.maxFinite,
-                              width: double.maxFinite,
-                              child: Center(
-                                child: AutoSizeText(
-                                  article.text,
-                                  maxFontSize: 20,
-                                  maxLines: 3,
-                                  minFontSize: 12.0,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16.0,
+                            Flexible(
+                              flex: 1,
+                              child: SizedBox(
+                                height: double.maxFinite,
+                                width: double.maxFinite,
+                                child: Center(
+                                  child: AutoSizeText(
+                                    article.text,
+                                    maxFontSize: 20,
+                                    maxLines: 3,
+                                    minFontSize: 12.0,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.0,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

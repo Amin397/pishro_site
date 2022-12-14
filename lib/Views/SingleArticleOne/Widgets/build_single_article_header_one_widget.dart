@@ -16,7 +16,22 @@ class BuildSingleArticleHeaderOneWidget extends StatelessWidget {
       width: Get.width,
       height: (Responsive.isMobile()) ? Get.height * .35 : Get.height,
       child: Responsive(
-        mobile: const SizedBox(),
+        mobile: Stack(
+          children: [
+            SizedBox(
+              width: Get.width,
+              height: double.maxFinite,
+              child: const Image(
+                image: AssetImage(
+                  'assets/image/artOneHeader.png',
+                ),
+                fit: BoxFit.fill,
+              ),
+            ),
+            _buildTextBoxMobile(),
+            _buildHeaderButtonsMobile(),
+          ],
+        ),
         desktop: Stack(
           children: [
             SizedBox(
@@ -90,6 +105,59 @@ class BuildSingleArticleHeaderOneWidget extends StatelessWidget {
   }
 
 
+  Widget _buildHeaderButtonsMobile() {
+    return Align(
+      alignment: Alignment.topRight,
+      child: Container(
+        height: Get.height * .08,
+        width: Get.width,
+        padding: paddingAll16,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'درباره ما',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16.0,
+              ),
+            ),
+            const Text(
+              'وبلاگ',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+              ),
+            ),
+            const Text(
+              'محصولات',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16.0,
+              ),
+            ),
+            const Text(
+              'خانه',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16.0,
+              ),
+            ),
+            const SizedBox(),
+            Image(
+              image: const AssetImage(
+                'assets/image/logo.png',
+              ),
+              height: Get.height * .07,
+              width: Get.height * .07,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+
   Widget _buildTextBox() {
     return Align(
       alignment: Alignment.bottomCenter,
@@ -122,6 +190,47 @@ class BuildSingleArticleHeaderOneWidget extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+
+  Widget _buildTextBoxMobile() {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: Get.width * .08,
+          ),
+          margin: EdgeInsets.symmetric(
+            vertical: Get.height * .05,
+          ),
+          width: Get.width,
+          height: Get.height * .15,
+          color: Colors.white.withOpacity(.8),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              AutoSizeText(
+                'چگونه فرزندان‌مان را خشک می‌کنیم؟',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 28.0,
+                ),
+              ),
+              AutoSizeText(
+                'چرا بازی‌های سرخوشانه برای رشد کودکان بسیار مهم هستند؟',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 22.0,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
