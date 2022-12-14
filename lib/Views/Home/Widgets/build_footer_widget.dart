@@ -15,9 +15,24 @@ class BuildFooterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: Get.width,
       height: (Responsive.isMobile()) ? Get.height * .5 : Get.height * .7,
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              textPColor.withOpacity(.5),
+              textPColor.withOpacity(.3),
+              textPColor.withOpacity(.2),
+              textPColor.withOpacity(.1),
+              textPColor.withOpacity(.05),
+              textPColor.withOpacity(.01),
+              Colors.transparent,
+            ],
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+          )
+      ),
       child: Align(
         alignment: Alignment.bottomCenter,
         child: Responsive(

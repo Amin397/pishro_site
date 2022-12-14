@@ -19,7 +19,22 @@ class BuildSingleArticleHeaderTwoWidget extends StatelessWidget {
       width: Get.width,
       height: (Responsive.isMobile()) ? Get.height * .35 : Get.height * .85,
       child: Responsive(
-        mobile: const SizedBox(),
+        mobile: Stack(
+          children: [
+            SizedBox(
+              width: Get.width,
+              height: Get.height * .35,
+              child: const Image(
+                image: AssetImage(
+                  'assets/image/secondArtImage.png',
+                ),
+                fit: BoxFit.fill,
+              ),
+            ),
+            _buildTextBoxMobile(),
+            _buildHeaderButtonsMobile(),
+          ],
+        ),
         desktop: Stack(
           children: [
             SizedBox(
@@ -46,6 +61,59 @@ class BuildSingleArticleHeaderTwoWidget extends StatelessWidget {
       child: Container(
         height: Get.height * .1,
         width: Get.width * .35,
+        padding: paddingAll16,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'درباره ما',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+              ),
+            ),
+            const Text(
+              'وبلاگ',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+              ),
+            ),
+            const Text(
+              'محصولات',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+              ),
+            ),
+            const Text(
+              'خانه',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+              ),
+            ),
+            const SizedBox(),
+            Image(
+              image: const AssetImage(
+                'assets/image/logo.png',
+              ),
+              height: Get.height * .07,
+              width: Get.height * .07,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+
+  Widget _buildHeaderButtonsMobile() {
+    return Align(
+      alignment: Alignment.topRight,
+      child: Container(
+        height: Get.height * .08,
+        width: Get.width,
         padding: paddingAll16,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,6 +191,44 @@ class BuildSingleArticleHeaderTwoWidget extends StatelessWidget {
             style: TextStyle(
               color: Colors.black,
               fontSize: 32.0,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTextBoxMobile() {
+    return Container(
+      height: double.maxFinite,
+      width: Get.width * .35,
+      decoration: BoxDecoration(
+        color: lightYellow.withOpacity(.9),
+        boxShadow: shadow(),
+      ),
+      padding: EdgeInsets.symmetric(
+        vertical: Get.height * .03,
+      ),
+      margin: EdgeInsets.symmetric(
+        horizontal: Get.width * .1,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: const[
+          AutoSizeText(
+            'هفت گناه کبیرهٔ آموزش اجباری؟\n',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 28.0,
+            ),
+          ),
+          AutoSizeText(
+            'چرا آموزش‌های سنتی ممکن است منجر به افسردگی در کودکان‌مان شود؟',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 22.0,
             ),
           ),
         ],
