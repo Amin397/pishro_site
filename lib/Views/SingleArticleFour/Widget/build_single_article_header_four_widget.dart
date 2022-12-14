@@ -19,10 +19,14 @@ class BuildSingleArticleHeaderFourWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: Get.width,
-      height: Get.height,
+      height:(Responsive.isMobile())?Get.height * .35: Get.height,
       child: Responsive(
         mobile: Stack(
-          children: const [],
+          children: [
+            _buildHeaderImage(),
+            _buildTextBoxMobile(),
+            _buildHeaderButtonsMobile(),
+          ],
         ),
         desktop: Stack(
           children: [
@@ -42,6 +46,64 @@ class BuildSingleArticleHeaderFourWidget extends StatelessWidget {
       child: Container(
         height: Get.height * .1,
         width: Get.width * .35,
+        padding: paddingAll16,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'درباره ما',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+              ),
+            ),
+            const Text(
+              'وبلاگ',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+              ),
+            ),
+            const Text(
+              'محصولات',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: const Text(
+                'خانه',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18.0,
+                ),
+              ),
+            ),
+            const SizedBox(),
+            Image(
+              image: const AssetImage(
+                'assets/image/logo.png',
+              ),
+              height: Get.height * .07,
+              width: Get.height * .07,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+
+  Widget _buildHeaderButtonsMobile() {
+    return Align(
+      alignment: Alignment.topRight,
+      child: Container(
+        height: Get.height * .08,
+        width: Get.width,
         padding: paddingAll16,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -125,6 +187,47 @@ class BuildSingleArticleHeaderFourWidget extends StatelessWidget {
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 32.0,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+
+  Widget _buildTextBoxMobile() {
+    return Align(
+      alignment: Alignment.bottomLeft,
+      child: Container(
+        height: Get.height * .15,
+        width: Get.width,
+        decoration: BoxDecoration(
+          color: textPColor.withOpacity(.8),
+          boxShadow: shadow(),
+        ),
+        padding: paddingSymmetricH30,
+        margin: EdgeInsets.symmetric(
+          vertical: Get.height * .05,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: const [
+            AutoSizeText(
+              'کودکان چگونه یاد می‌گیرند؟',
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 28.0,
+              ),
+            ),
+            AutoSizeText(
+              'نظریه‌های روان‌شناسی درباره فرایند یادگیری کودکان چه می‌گویند؟',
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 22.0,
               ),
             ),
           ],
