@@ -96,11 +96,16 @@ class BuildHomeHeaderWidget extends StatelessWidget {
                 fontSize: 18.0,
               ),
             ),
-            const Text(
-              'وبلاگ',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
+            InkWell(
+              onTap: (){
+                controller.goToArticlesPart();
+              },
+              child: const Text(
+                'وبلاگ',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                ),
               ),
             ),
             const Text(
@@ -150,14 +155,19 @@ class BuildHomeHeaderWidget extends StatelessWidget {
                 fontSize: 18.0,
               ),
             ),
-            const AutoSizeText(
-              'وبلاگ',
-              maxLines: 1,
-              minFontSize: 16.0,
-              maxFontSize: 22.0,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
+            InkWell(
+              onTap: (){
+                controller.goToArticlesPart();
+              },
+              child: const AutoSizeText(
+                'وبلاگ',
+                maxLines: 1,
+                minFontSize: 16.0,
+                maxFontSize: 22.0,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                ),
               ),
             ),
             const AutoSizeText(

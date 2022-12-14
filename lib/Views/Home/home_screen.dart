@@ -28,22 +28,27 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SizedBox(
         height: Get.height,
         width: Get.width,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              // _buildHeader(),
-              BuildHomeHeaderWidget(
-                controller: controller,
-              ),
-              const BuildCompanyInfo(),
-              const BuildFutureWidget(),
-              BuildArticlesWidget(
-                controller: controller,
-              ),
-              const BuildFooterWidget()
-            ],
+        child: GetBuilder(
+          init: controller,
+          id: 'scroll',
+          builder: (ctx)=>SingleChildScrollView(
+            controller: controller.scrollController,
+            child: Column(
+              children: [
+                // _buildHeader(),
+                BuildHomeHeaderWidget(
+                  controller: controller,
+                ),
+                const BuildCompanyInfo(),
+                const BuildFutureWidget(),
+                BuildArticlesWidget(
+                  controller: controller,
+                ),
+                const BuildFooterWidget()
+              ],
+            ),
           ),
-        ),
+        )
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../Models/Home/article_model.dart';
@@ -36,6 +37,17 @@ class HomeController extends GetxController {
     ),
   ];
 
+  late ScrollController scrollController ;
+
+  @override
+  void onInit() {
+    scrollController = ScrollController(
+      initialScrollOffset: 0.0,
+    );
+    super.onInit();
+  }
+
+
   void onHover({required ArticleModel article}) {
     for (var element in articlesList) {
       element.isSelected(false);
@@ -55,7 +67,7 @@ class HomeController extends GetxController {
       case 0:
         {
           Get.toNamed(
-              NameRouts.articleOne,
+            NameRouts.articleOne,
           );
           break;
         }
@@ -81,5 +93,14 @@ class HomeController extends GetxController {
           break;
         }
     }
+  }
+
+  void goToArticlesPart() {
+    scrollController.animateTo(
+      scrollController.position.maxScrollExtent,
+      duration: Duration(seconds: 2),
+      curve: Curves.fastOutSlowIn,
+    );
+    update(['scroll']);
   }
 }
