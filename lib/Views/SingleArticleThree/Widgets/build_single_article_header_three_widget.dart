@@ -18,10 +18,14 @@ class BuildSingleArticleHeaderThreeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: Get.width,
-      height: Get.height * .9,
+      height: (Responsive.isMobile())?Get.height * .4:Get.height * .9,
       child: Responsive(
         mobile: Stack(
-          children: const [],
+          children: [
+            _buildHeaderImage(),
+            _buildTextBoxMobile(),
+            _buildHeaderButtonsMobile(),
+          ],
         ),
         desktop: Stack(
           children: [
@@ -91,6 +95,64 @@ class BuildSingleArticleHeaderThreeWidget extends StatelessWidget {
     );
   }
 
+
+  Widget _buildHeaderButtonsMobile() {
+    return Align(
+      alignment: Alignment.topRight,
+      child: Container(
+        height: Get.height * .08,
+        width: Get.width ,
+        padding: paddingAll16,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'درباره ما',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+              ),
+            ),
+            const Text(
+              'وبلاگ',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+              ),
+            ),
+            const Text(
+              'محصولات',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: const Text(
+                'خانه',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18.0,
+                ),
+              ),
+            ),
+            const SizedBox(),
+            Image(
+              image: const AssetImage(
+                'assets/image/logo.png',
+              ),
+              height: Get.height * .07,
+              width: Get.height * .07,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildTextBox() {
     return Align(
       alignment: Alignment.bottomRight,
@@ -123,6 +185,48 @@ class BuildSingleArticleHeaderThreeWidget extends StatelessWidget {
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 32.0,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+
+
+  Widget _buildTextBoxMobile() {
+    return Align(
+      alignment: Alignment.bottomRight,
+      child: Container(
+        height: Get.height * .15,
+        width: Get.width,
+        decoration: BoxDecoration(
+          color: lightYellow.withOpacity(.8),
+          boxShadow: shadow(),
+        ),
+        padding: paddingSymmetricH30,
+        margin: EdgeInsets.symmetric(
+          vertical: Get.height * .04,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: const [
+            AutoSizeText(
+              'همه نکاتی که باید درباره نظریه انسان‌گرایانه یادگیری بدانید',
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 28.0,
+              ),
+            ),
+            AutoSizeText(
+              'استراتژی آموزش کودکان ',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 22.0,
               ),
             ),
           ],

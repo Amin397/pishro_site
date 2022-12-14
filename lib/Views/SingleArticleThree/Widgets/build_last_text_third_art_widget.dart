@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pishro_site/Utils/responsive.dart';
 
 class BuildLastTextThirdArtWidget extends StatelessWidget {
   const BuildLastTextThirdArtWidget({Key? key}) : super(key: key);
@@ -8,11 +9,11 @@ class BuildLastTextThirdArtWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: Get.width,
-      height: Get.height * .5,
+      height:(Responsive.isMobile())?Get.height * .7: Get.height * .5,
       padding: EdgeInsets.symmetric(
-        horizontal: Get.width * .1,
+        horizontal:(Responsive.isMobile())?Get.width * .05: Get.width * .1,
       ),
-      child: const Center(
+      child: Center(
         child: Text(
           '\nاصول‌بنیادین نظریه انسان‌گرایانه یادگیری'
           'آرمان و هدف این نظریه خودشکوفایی است؛ اینکه انسان‌ها به بهترین نسخه خود برسند و از خود رضایت کافی داشته‌ باشند. به نظر انسان‌گرایان، انسان‌ها این انگیزه را دارند که چنین فرایندی را طی کنند و در این راه هرچه لازم باشد یاد خواهند گرفت.\n\n'
@@ -24,7 +25,7 @@ class BuildLastTextThirdArtWidget extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             fontFamily: 'koodak',
-            fontSize: 20.0,
+            fontSize:(Responsive.isMobile())?17: 20.0,
           ),
         ),
       ),

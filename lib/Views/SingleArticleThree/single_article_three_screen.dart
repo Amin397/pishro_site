@@ -29,11 +29,11 @@ class SingleArticleThreeScreen extends StatelessWidget {
               ),
               const BuildFirstTextThirdArtWidget(),
               SizedBox(
-                height: Get.height * .05,
+                height: Get.height * .03,
               ),
               const BuildMainImageWidget(),
               SizedBox(
-                height: Get.height * .05,
+                height: Get.height * .03,
               ),
               const BuildLastTextThirdArtWidget(),
               const BuildFooterWidget(),

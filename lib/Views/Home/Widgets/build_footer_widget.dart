@@ -284,7 +284,7 @@ class BuildFooterWidget extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.centerRight,
                         child: AutoSizeText(
-                          'تهران، میدان فلسطین، خیابان طالقانی شرقی، پلاک 399',
+                          'تهران، میدان فلسطین، خیابان طالقانی غربی، پلاک 399',
                           style: TextStyle(
                             color: textPColor,
                             fontSize: 28.0,
@@ -431,7 +431,7 @@ class BuildFooterWidget extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.centerRight,
                         child: AutoSizeText(
-                          'تهران، میدان فلسطین، خیابان طالقانی شرقی، پلاک 399',
+                          'تهران، میدان فلسطین، خیابان طالقانی غربی، پلاک 399',
                           textAlign: TextAlign.right,
                           style: TextStyle(
                             color: textPColor,
