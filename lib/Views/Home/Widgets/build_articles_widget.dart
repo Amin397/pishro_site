@@ -19,7 +19,7 @@ class BuildArticlesWidget extends StatelessWidget {
     return Container(
       width: Get.width,
       height: (Responsive.isMobile()) ? Get.height * .38 : Get.height * .45,
-      padding: (Responsive.isMobile()) ? EdgeInsets.zero : paddingSymmetricH30,
+      // padding: (Responsive.isMobile()) ? EdgeInsets.zero : paddingSymmetricH30,
       decoration: BoxDecoration(
         color: mainYellowBgColor,
         boxShadow: [
@@ -71,7 +71,7 @@ class BuildArticlesWidget extends StatelessWidget {
             ],
           ),
           const Text(
-            'مقالات',
+            'وبلاگ',
             style: TextStyle(
               color: textPColor,
               fontSize: 36.0,
@@ -107,7 +107,7 @@ class BuildArticlesWidget extends StatelessWidget {
             ],
           ),
           const Text(
-            'مقالات',
+            'وبلاگ',
             style: TextStyle(
               color: textPColor,
               fontSize: 24.0,
@@ -122,34 +122,106 @@ class BuildArticlesWidget extends StatelessWidget {
     return Expanded(
       child: SizedBox(
         height: double.maxFinite,
-        width: Get.width * .6,
+        width: Get.width,
         child: Stack(
           clipBehavior: Clip.none,
           children: [
             Positioned(
-              bottom: -Get.height * .07,
-              child: SizedBox(
+              bottom: -Get.height * .15,
+              child: Container(
+                // padding: paddingSymmetricH30,
                 height: Get.height * .5,
-                width: Get.width * .6,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    _buildArtItem(
-                      article: controller.articlesList[3],
-                    ),
-                    _buildArtItem(
-                      article: controller.articlesList[2],
-                    ),
-                    _buildArtItem(
-                      article: controller.articlesList[1],
-                    ),
-                    _buildArtItem(
-                      article: controller.articlesList[0],
-                    ),
-                  ],
+                width: Get.width,
+                child: Container(
+                  // margin: paddingSymmetricH30,
+                  height: double.maxFinite,
+                  width: double.maxFinite,
+                  child: PageView.builder(
+                    onPageChanged: (page) {
+                      controller.changePage(page: page);
+                    },
+                    controller: controller.pageController,
+                    itemCount: controller.articlesList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return _buildArtItem(
+                        article: controller.articlesList[index],
+                      );
+                    },
+                  ),
+                  // child: Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     _buildArtItem(
+                  //       article: controller.articlesList[3],
+                  //     ),
+                  //     _buildArtItem(
+                  //       article: controller.articlesList[2],
+                  //     ),
+                  //     _buildArtItem(
+                  //       article: controller.articlesList[1],
+                  //     ),
+                  //     _buildArtItem(
+                  //       article: controller.articlesList[0],
+                  //     ),
+                  //   ],
+                  // ),
                 ),
               ),
-            )
+            ),
+            GestureDetector(
+              onTap: () {
+                controller.pageController.previousPage(
+                  duration: Duration(milliseconds: 1000),
+                  curve: Curves.easeInOutCubic,
+                );
+              },
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  height: Get.height * .056,
+                  width: Get.height * .056,
+                  margin: paddingSymmetricH30,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: shadow(),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      Icons.arrow_back_ios_new,
+                      size: 20.0,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                controller.pageController.nextPage(
+                  duration: Duration(milliseconds: 1000),
+                  curve: Curves.easeInOutCubic,
+                );
+              },
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Container(
+                  height: Get.height * .056,
+                  width: Get.height * .056,
+                  margin: paddingSymmetricH30,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: shadow(),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20.0,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -202,104 +274,123 @@ class BuildArticlesWidget extends StatelessWidget {
         controller.onExit();
       },
       child: InkWell(
+        customBorder: RoundedRectangleBorder(borderRadius: radiusAll16),
         onTap: () {
-          controller.goToArticle(
-            article: article,
-          );
+          if (article.id == controller.pageViewIndex.value ||
+              article.id == controller.pageViewIndex.value + 1 ||
+              article.id == controller.pageViewIndex.value - 1) {
+            controller.goToArticle(
+              article: article,
+            );
+          } else {
+            controller.pageController.animateToPage(
+              article.id,
+              duration: const Duration(milliseconds: 1000),
+              curve: Curves.easeInOutCubic,
+            );
+          }
         },
         child: AnimationConfiguration.synchronized(
           duration: const Duration(milliseconds: 1500),
           child: ScaleAnimation(
             curve: Curves.linearToEaseOut,
             child: FadeInAnimation(
-              child: Obx(() => AnimatedContainer(
-                    duration: const Duration(milliseconds: 370),
-                    height: (article.isSelected.isTrue)
-                        ? Get.height * .45
-                        : Get.height * .4,
-                    width: (article.isSelected.isTrue)
-                        ? Get.width * .14
-                        : Get.width * .12,
-                    decoration: BoxDecoration(
-                      color: textPColor,
-                      borderRadius: radiusAll36,
-                      boxShadow: shadow(),
-                    ),
-                    child: Column(
-                      children: [
-                        Flexible(
-                          flex: 3,
-                          child: Container(
-                            height: double.maxFinite,
-                            width: double.maxFinite,
-                            margin: paddingAll16,
-                            decoration: BoxDecoration(
-                              color: articlesBgColor,
-                              borderRadius: radiusAll36,
-                            ),
-                            child: Center(
-                              child: Image(
-                                image: AssetImage(
-                                  article.image,
-                                ),
+              child: Obx(
+                () => AnimatedContainer(
+                  duration: const Duration(milliseconds: 370),
+                  // height: (article.isSelected.isTrue)
+                  //     ? Get.height * .45
+                  //     : Get.height * .4,
+                  width: Get.width * .1,
+                  margin: EdgeInsets.symmetric(
+                    horizontal: Get.width * .02,
+                    vertical: (article.isSelected.isTrue)?0.0:Get.height * .03
+                  ),
+                  decoration: BoxDecoration(
+                    color: (article.id == controller.pageViewIndex.value ||
+                            article.id == controller.pageViewIndex.value + 1 ||
+                            article.id == controller.pageViewIndex.value - 1)
+                        ? textPColor
+                        : textPColor.withAlpha(50),
+                    borderRadius: radiusAll42,
+                    boxShadow: shadow(),
+                  ),
+                  child: Column(
+                    children: [
+                      Flexible(
+                        flex: 3,
+                        child: Container(
+                          height: double.maxFinite,
+                          width: double.maxFinite,
+                          margin: paddingAll16,
+                          decoration: BoxDecoration(
+                            color: articlesBgColor,
+                            borderRadius: radiusAll42,
+                          ),
+                          child: Center(
+                            child: Image(
+                              image: AssetImage(
+                                article.image,
                               ),
                             ),
                           ),
                         ),
-                        Flexible(
-                          flex: 2,
-                          child: SizedBox(
-                            height: double.maxFinite,
-                            width: double.maxFinite,
-                            child: Column(
-                              children: [
-                                Flexible(
-                                  flex: 1,
-                                  child: SizedBox(
-                                    height: double.maxFinite,
-                                    width: double.maxFinite,
-                                    child: Center(
-                                      child: AutoSizeText(
-                                        article.title,
-                                        maxFontSize: 36.0,
-                                        maxLines: 2,
-                                        minFontSize: 22.0,
-                                        textAlign: TextAlign.center,
-                                        style: const TextStyle(
-                                          color: textYColor,
-                                          fontSize: 30.0,
-                                        ),
+                      ),
+                      Flexible(
+                        flex: 2,
+                        child: SizedBox(
+                          height: double.maxFinite,
+                          width: double.maxFinite,
+                          child: Column(
+                            children: [
+                              Flexible(
+                                flex: 1,
+                                child: SizedBox(
+                                  height: double.maxFinite,
+                                  width: double.maxFinite,
+                                  child: Center(
+                                    child: AutoSizeText(
+                                      article.title,
+                                      maxFontSize: 36.0,
+                                      maxLines: 2,
+                                      minFontSize: 22.0,
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                        color: textYColor,
+                                        fontSize: 30.0,
                                       ),
                                     ),
                                   ),
                                 ),
-                                Flexible(
-                                  flex: 1,
-                                  child: SizedBox(
-                                    height: double.maxFinite,
-                                    width: double.maxFinite,
-                                    child: Center(
-                                      child: AutoSizeText(
-                                        article.text,
-                                        maxFontSize: 24,
-                                        maxLines: 3,
-                                        minFontSize: 14.0,
-                                        textAlign: TextAlign.center,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18.0,
-                                        ),
+                              ),
+                              Flexible(
+                                flex: 1,
+                                child: SizedBox(
+                                  height: double.maxFinite,
+                                  width: double.maxFinite,
+                                  child: Center(
+                                    child: AutoSizeText(
+                                      article.text,
+                                      maxFontSize: 24,
+                                      maxLines: 3,
+                                      minFontSize: 14.0,
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
                                       ),
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
-                  )),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ),
         ),
@@ -329,7 +420,7 @@ class BuildArticlesWidget extends StatelessWidget {
                 width: Get.width * .235,
                 decoration: BoxDecoration(
                   color: textPColor.withOpacity(.9),
-                  borderRadius: radiusAll36,
+                  borderRadius: radiusAll42,
                   boxShadow: shadow(),
                 ),
                 child: Column(
@@ -342,7 +433,7 @@ class BuildArticlesWidget extends StatelessWidget {
                         margin: paddingAll6,
                         decoration: BoxDecoration(
                           color: articlesBgColor,
-                          borderRadius: radiusAll36,
+                          borderRadius: radiusAll42,
                         ),
                         child: Center(
                           child: Image(

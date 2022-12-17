@@ -6,6 +6,10 @@ import '../../Utils/rout_utils.dart';
 import '../../Views/SingleArticleOne/single_article_one_screen.dart';
 
 class HomeController extends GetxController {
+  late PageController pageController;
+
+  RxInt pageViewIndex = 3.obs;
+
   List<ArticleModel> articlesList = [
     ArticleModel(
       id: 0,
@@ -35,18 +39,35 @@ class HomeController extends GetxController {
       text: 'نظریه های روان شناسی\nدرباره فرایند یادگیری\nکودکان',
       title: 'کودکان چگونه\n یاد میگیرند',
     ),
+    ArticleModel(
+      id: 4,
+      isSelected: false.obs,
+      image: 'assets/image/list4.png',
+      text: 'درباره مکتبی بین زندگی روزمره و \nدرک ارتباط برقرار می کند',
+      title: 'درباره مکتب یادگیری \nتجربی چه می دانیم؟ ',
+    ),
+    ArticleModel(
+      id: 5,
+      isSelected: false.obs,
+      image: 'assets/image/list4.png',
+      text: 'روش آموزشی مونته سوری یک \nروش آموزش کودک محور',
+      title: 'آموزش مونته سوری\n چیست؟',
+    ),
   ];
 
-  late ScrollController scrollController ;
+  late ScrollController scrollController;
 
   @override
   void onInit() {
     scrollController = ScrollController(
       initialScrollOffset: 0.0,
     );
+    pageController = PageController(
+      initialPage: pageViewIndex.value,
+      viewportFraction: .2,
+    );
     super.onInit();
   }
-
 
   void onHover({required ArticleModel article}) {
     for (var element in articlesList) {
@@ -85,10 +106,22 @@ class HomeController extends GetxController {
           );
           break;
         }
+      case 3:{
+        Get.toNamed(
+          NameRouts.articleFour,
+        );
+        break;
+      }
+      case 4:{
+        Get.toNamed(
+          NameRouts.articleFive,
+        );
+        break;
+      }
       default:
         {
           Get.toNamed(
-            NameRouts.articleFour,
+            NameRouts.articleSix,
           );
           break;
         }
@@ -98,9 +131,13 @@ class HomeController extends GetxController {
   void goToArticlesPart() {
     scrollController.animateTo(
       scrollController.position.maxScrollExtent,
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
       curve: Curves.fastOutSlowIn,
     );
     update(['scroll']);
+  }
+
+  void changePage({required int page}) {
+    pageViewIndex(page);
   }
 }

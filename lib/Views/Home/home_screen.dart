@@ -39,11 +39,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 BuildHomeHeaderWidget(
                   controller: controller,
                 ),
-                const BuildCompanyInfo(),
-                const BuildFutureWidget(),
                 BuildArticlesWidget(
                   controller: controller,
                 ),
+                SizedBox(
+                  height: Get.height * .25,
+                ),
+                const BuildCompanyInfo(),
+                const BuildFutureWidget(),
                 const BuildFooterWidget()
               ],
             ),

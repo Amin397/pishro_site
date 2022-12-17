@@ -33,6 +33,7 @@ final BorderRadius radiusAll24 = BorderRadius.circular(24.0);
 final BorderRadius radiusAll28 = BorderRadius.circular(28.0);
 final BorderRadius radiusAll32 = BorderRadius.circular(32.0);
 final BorderRadius radiusAll36 = BorderRadius.circular(36.0);
+final BorderRadius radiusAll42 = BorderRadius.circular(42.0);
 final BorderRadius radiusAll20 = BorderRadius.circular(20.0);
 
 const double moneyTextSize = 22.0;

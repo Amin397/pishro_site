@@ -13,6 +13,8 @@ void main() {
   // );
   runApp(
     GetMaterialApp(
+
+      title: 'پیشرو پارسی',
       debugShowCheckedModeBanner: false,
       getPages: PageRout.pages,
       initialRoute: NameRouts.home,
