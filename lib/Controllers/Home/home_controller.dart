@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:pishro_site/Utils/responsive.dart';
 
 import '../../Models/Home/article_model.dart';
 import '../../Utils/rout_utils.dart';
@@ -64,7 +65,7 @@ class HomeController extends GetxController {
     );
     pageController = PageController(
       initialPage: pageViewIndex.value,
-      viewportFraction: .2,
+      viewportFraction:(Responsive.isMobile())? .5: .2,
     );
     super.onInit();
   }

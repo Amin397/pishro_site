@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:pishro_site/Controllers/Home/home_controller.dart';
 import 'package:pishro_site/Utils/responsive.dart';
 
@@ -128,11 +129,11 @@ class BuildArticlesWidget extends StatelessWidget {
           children: [
             Positioned(
               bottom: -Get.height * .15,
-              child: Container(
+              child: SizedBox(
                 // padding: paddingSymmetricH30,
                 height: Get.height * .5,
                 width: Get.width,
-                child: Container(
+                child: SizedBox(
                   // margin: paddingSymmetricH30,
                   height: double.maxFinite,
                   width: double.maxFinite,
@@ -230,35 +231,110 @@ class BuildArticlesWidget extends StatelessWidget {
 
   Widget _buildArticlesListMobile() {
     return Expanded(
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Positioned(
-            bottom: -Get.height * .08,
-            child: Container(
-              padding: paddingSymmetricH8,
-              height: Get.height * .38,
-              width: Get.width,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _buildArtItemMobile(
-                    article: controller.articlesList[3],
+      child: SizedBox(
+        height: double.maxFinite,
+        width: Get.width,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Positioned(
+              bottom: -Get.height * .15,
+              child: SizedBox(
+                // padding: paddingSymmetricH30,
+                height: Get.height * .5,
+                width: Get.width,
+                child: SizedBox(
+                  // margin: paddingSymmetricH30,
+                  height: double.maxFinite,
+                  width: double.maxFinite,
+                  child: PageView.builder(
+                    onPageChanged: (page) {
+                      controller.changePage(page: page);
+                    },
+                    controller: controller.pageController,
+                    itemCount: controller.articlesList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return _buildArtItem(
+                        article: controller.articlesList[index],
+                      );
+                    },
                   ),
-                  _buildArtItemMobile(
-                    article: controller.articlesList[2],
-                  ),
-                  _buildArtItemMobile(
-                    article: controller.articlesList[1],
-                  ),
-                  _buildArtItemMobile(
-                    article: controller.articlesList[0],
-                  ),
-                ],
+                  // child: Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     _buildArtItem(
+                  //       article: controller.articlesList[3],
+                  //     ),
+                  //     _buildArtItem(
+                  //       article: controller.articlesList[2],
+                  //     ),
+                  //     _buildArtItem(
+                  //       article: controller.articlesList[1],
+                  //     ),
+                  //     _buildArtItem(
+                  //       article: controller.articlesList[0],
+                  //     ),
+                  //   ],
+                  // ),
+                ),
               ),
             ),
-          ),
-        ],
+            GestureDetector(
+              onTap: () {
+                controller.pageController.previousPage(
+                  duration: Duration(milliseconds: 1000),
+                  curve: Curves.easeInOutCubic,
+                );
+              },
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  height: Get.height * .056,
+                  width: Get.height * .056,
+                  margin: paddingSymmetricH30,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: shadow(),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      Icons.arrow_back_ios_new,
+                      size: 20.0,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                controller.pageController.nextPage(
+                  duration: Duration(milliseconds: 1000),
+                  curve: Curves.easeInOutCubic,
+                );
+              },
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Container(
+                  height: Get.height * .056,
+                  width: Get.height * .056,
+                  margin: paddingSymmetricH30,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: shadow(),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20.0,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -276,19 +352,37 @@ class BuildArticlesWidget extends StatelessWidget {
       child: InkWell(
         customBorder: RoundedRectangleBorder(borderRadius: radiusAll16),
         onTap: () {
-          if (article.id == controller.pageViewIndex.value ||
-              article.id == controller.pageViewIndex.value + 1 ||
-              article.id == controller.pageViewIndex.value - 1) {
-            controller.goToArticle(
-              article: article,
-            );
-          } else {
-            controller.pageController.animateToPage(
-              article.id,
-              duration: const Duration(milliseconds: 1000),
-              curve: Curves.easeInOutCubic,
-            );
+
+
+          if(Responsive.isMobile()){
+            if (article.id == controller.pageViewIndex.value){
+              controller.goToArticle(
+                article: article,
+              );
+            } else {
+              controller.pageController.animateToPage(
+                article.id,
+                duration: const Duration(milliseconds: 1000),
+                curve: Curves.easeInOutCubic,
+              );
+            }
+          }else{
+            if (article.id == controller.pageViewIndex.value ||
+                article.id == controller.pageViewIndex.value + 1 ||
+                article.id == controller.pageViewIndex.value - 1) {
+              controller.goToArticle(
+                article: article,
+              );
+            } else {
+              controller.pageController.animateToPage(
+                article.id,
+                duration: const Duration(milliseconds: 1000),
+                curve: Curves.easeInOutCubic,
+              );
+            }
           }
+
+
         },
         child: AnimationConfiguration.synchronized(
           duration: const Duration(milliseconds: 1500),
@@ -303,15 +397,21 @@ class BuildArticlesWidget extends StatelessWidget {
                   //     : Get.height * .4,
                   width: Get.width * .1,
                   margin: EdgeInsets.symmetric(
-                    horizontal: Get.width * .02,
-                    vertical: (article.isSelected.isTrue)?0.0:Get.height * .03
-                  ),
+                      horizontal: Get.width * .02,
+                      vertical:
+                          (article.isSelected.isTrue) ? 0.0 : Get.height * .03),
                   decoration: BoxDecoration(
-                    color: (article.id == controller.pageViewIndex.value ||
-                            article.id == controller.pageViewIndex.value + 1 ||
-                            article.id == controller.pageViewIndex.value - 1)
-                        ? textPColor
-                        : textPColor.withAlpha(50),
+                    color: (Responsive.isDesktop())
+                        ? (article.id == controller.pageViewIndex.value ||
+                                article.id ==
+                                    controller.pageViewIndex.value + 1 ||
+                                article.id ==
+                                    controller.pageViewIndex.value - 1)
+                            ? textPColor
+                            : textPColor.withAlpha(50)
+                        : (article.id == controller.pageViewIndex.value)
+                            ? textPColor
+                            : textPColor.withAlpha(50),
                     borderRadius: radiusAll42,
                     boxShadow: shadow(),
                   ),
