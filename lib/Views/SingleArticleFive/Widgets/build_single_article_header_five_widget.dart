@@ -7,11 +7,9 @@ import '../../../Consts/measures.dart';
 import '../../../Controllers/Articles/single_article_five_controller.dart';
 import '../../../Utils/responsive.dart';
 
-
-
 class BuildSingleArticleHeaderFiveWidget extends StatelessWidget {
-  const BuildSingleArticleHeaderFiveWidget({Key? key , required this.controller}) : super(key: key);
-
+  const BuildSingleArticleHeaderFiveWidget({Key? key, required this.controller})
+      : super(key: key);
 
   final SingleArticleFiveController controller;
 
@@ -102,7 +100,6 @@ class BuildSingleArticleHeaderFiveWidget extends StatelessWidget {
     );
   }
 
-
   Widget _buildTextBoxMobile() {
     return Positioned(
       right: Get.width * .1,
@@ -138,6 +135,63 @@ class BuildSingleArticleHeaderFiveWidget extends StatelessWidget {
                 color: Colors.black,
                 fontSize: 22.0,
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHeaderButtonsMobile() {
+    return Align(
+      alignment: Alignment.bottomRight,
+      child: Container(
+        height: Get.height * .1,
+        width: Get.width,
+        padding: paddingAll16,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'درباره ما',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+              ),
+            ),
+            const Text(
+              'وبلاگ',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+              ),
+            ),
+            const Text(
+              'محصولات',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: const Text(
+                'خانه',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18.0,
+                ),
+              ),
+            ),
+            const SizedBox(),
+            Image(
+              image: const AssetImage(
+                'assets/image/logo.png',
+              ),
+              height: Get.height * .07,
+              width: Get.height * .07,
             ),
           ],
         ),
@@ -196,57 +250,4 @@ class BuildSingleArticleHeaderFiveWidget extends StatelessWidget {
       ),
     );
   }
-
-  Widget _buildHeaderButtonsMobile() {
-    return Align(
-      alignment: Alignment.bottomRight,
-      child: Container(
-        height: Get.height * .1,
-        width: Get.width,
-        padding: paddingAll16,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              'درباره ما',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18.0,
-              ),
-            ),
-            const Text(
-              'وبلاگ',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18.0,
-              ),
-            ),
-            const Text(
-              'محصولات',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18.0,
-              ),
-            ),
-            const Text(
-              'خانه',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18.0,
-              ),
-            ),
-            const SizedBox(),
-            Image(
-              image: const AssetImage(
-                'assets/image/logo.png',
-              ),
-              height: Get.height * .07,
-              width: Get.height * .07,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
 }

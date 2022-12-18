@@ -17,22 +17,22 @@ class BuildSingleArticleHeaderSixWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: Get.width,
-      height: (Responsive.isMobile()) ? Get.height * .35 : Get.height ,
+      height: (Responsive.isMobile()) ? Get.height * .6 : Get.height,
       child: Responsive(
         mobile: Stack(
           children: [
             SizedBox(
               width: Get.width,
-              height: Get.height * .35,
+              height: Get.height * .4,
               child: const Image(
                 image: AssetImage(
-                  'assets/image/secondArtImage.png',
+                  'assets/image/sixthHeaderImage.png',
                 ),
                 fit: BoxFit.fill,
               ),
             ),
-            // _buildTextBoxMobile(),
-            // _buildHeaderButtonsMobile(),
+            _buildTextBoxMobile(),
+            _buildHeaderButtonsMobile(),
           ],
         ),
         desktop: Stack(
@@ -53,6 +53,93 @@ class BuildSingleArticleHeaderSixWidget extends StatelessWidget {
             _buildTextColor(),
             _buildTextBox(),
             _buildHeaderButtons(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextBoxMobile() {
+    return Positioned(
+      right: Get.width * .1,
+      child: Container(
+        height: Get.height * .5,
+        width: Get.width * .3,
+        decoration: BoxDecoration(
+          color: textPColor.withOpacity(.6),
+          boxShadow: shadow(),
+        ),
+        padding: EdgeInsets.symmetric(
+          horizontal: Get.width * .02,
+        ),
+        // margin: EdgeInsets.symmetric(
+        //   vertical: Get.height * .1,
+        // ),
+        child: const Center(
+          child: AutoSizeText(
+            'آموزش مونته‌سوری چیست؟',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 28.0,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHeaderButtonsMobile() {
+    return Align(
+      alignment: Alignment.bottomRight,
+      child: Container(
+        height: Get.height * .1,
+        width: Get.width,
+        padding: paddingAll16,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'درباره ما',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+              ),
+            ),
+            const Text(
+              'وبلاگ',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+              ),
+            ),
+            const Text(
+              'محصولات',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: const Text(
+                'خانه',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18.0,
+                ),
+              ),
+            ),
+            const SizedBox(),
+            Image(
+              image: const AssetImage(
+                'assets/image/logo.png',
+              ),
+              height: Get.height * .07,
+              width: Get.height * .07,
+            ),
           ],
         ),
       ),
@@ -138,7 +225,7 @@ class BuildSingleArticleHeaderSixWidget extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: (){
+              onTap: () {
                 Get.back();
               },
               child: const Text(

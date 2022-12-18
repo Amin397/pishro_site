@@ -139,7 +139,7 @@ class SingleArticleFiveScreen extends StatelessWidget {
       ),
       mobile: Container(
         width: Get.width,
-        height: Get.height * .4,
+        height: Get.height * .3,
         decoration: BoxDecoration(
           boxShadow: shadow(),
           color: textPColor.withAlpha(100),
@@ -148,10 +148,10 @@ class SingleArticleFiveScreen extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             Positioned(
-              bottom: -Get.height * .1,
+              bottom: -Get.height * .05,
               left: Get.width * .07,
               child: SizedBox(
-                height: Get.height * .4,
+                height: Get.height * .3,
                 width: Get.width * .8,
                 child: const Image(
                   image: AssetImage(
