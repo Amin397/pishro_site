@@ -37,14 +37,17 @@ class BuildSingleArticleHeaderSixWidget extends StatelessWidget {
         ),
         desktop: Stack(
           children: [
-            SizedBox(
-              width: Get.width,
-              height: Get.height * .85,
-              child: const Image(
-                image: AssetImage(
-                  'assets/image/fifthHeaderImage.png',
+            Align(
+              alignment: Alignment.topRight,
+              child: SizedBox(
+                width: Get.width * .85,
+                height: Get.height * .85,
+                child: const Image(
+                  image: AssetImage(
+                    'assets/image/fifthHeaderImage.png',
+                  ),
+                  fit: BoxFit.fill,
                 ),
-                fit: BoxFit.fill,
               ),
             ),
             _buildTextColor(),
