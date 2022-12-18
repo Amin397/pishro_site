@@ -44,7 +44,7 @@ class BuildSingleArticleHeaderSixWidget extends StatelessWidget {
                 height: Get.height * .85,
                 child: const Image(
                   image: AssetImage(
-                    'assets/image/fifthHeaderImage.png',
+                    'assets/image/sixthHeaderImage.png',
                   ),
                   fit: BoxFit.fill,
                 ),

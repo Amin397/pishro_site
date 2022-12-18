@@ -340,7 +340,7 @@ class BuildFooterWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: const [
                           AutoSizeText(
-                            '02191007494',
+                            '02191007414',
                             style: TextStyle(
                               color: textPColor,
                               fontSize: 20.0,
@@ -354,7 +354,7 @@ class BuildFooterWidget extends StatelessWidget {
                             ),
                           ),
                           AutoSizeText(
-                            '02191007494',
+                            '02191009424',
                             style: TextStyle(
                               color: textPColor,
                               fontSize: 20.0,

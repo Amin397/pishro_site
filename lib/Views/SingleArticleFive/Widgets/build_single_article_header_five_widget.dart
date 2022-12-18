@@ -39,14 +39,17 @@ class BuildSingleArticleHeaderFiveWidget extends StatelessWidget {
         ),
         desktop: Stack(
           children: [
-            SizedBox(
-              width: Get.width,
-              height: Get.height * .85,
-              child: const Image(
-                image: AssetImage(
-                  'assets/image/fifthHeaderImage.png',
+            Align(
+              alignment: Alignment.topRight,
+              child: SizedBox(
+                width: Get.width * .85,
+                height: Get.height * .85,
+                child: const Image(
+                  image: AssetImage(
+                    'assets/image/fifthHeaderImage.png',
+                  ),
+                  fit: BoxFit.fill,
                 ),
-                fit: BoxFit.fill,
               ),
             ),
             _buildTextBox(),
@@ -58,39 +61,43 @@ class BuildSingleArticleHeaderFiveWidget extends StatelessWidget {
   }
 
   Widget _buildTextBox() {
-    return Container(
-      height: Get.height * .2,
-      width: Get.width * .5,
-      decoration: BoxDecoration(
-        color: lightYellow.withOpacity(.9),
-        boxShadow: shadow(),
-      ),
-      padding: EdgeInsets.symmetric(
-        vertical: Get.height * .1,
-      ),
-      margin: EdgeInsets.symmetric(
-        horizontal: Get.width * .1,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          AutoSizeText(
-            'هفت گناه کبیرهٔ آموزش اجباری؟',
-            textAlign: TextAlign.right,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 36.0,
+    return Align(
+      alignment: Alignment.bottomLeft,
+      child: Container(
+        height: Get.height * .2,
+        width: Get.width * .6,
+        decoration: BoxDecoration(
+          color: lightYellow.withOpacity(.9),
+          boxShadow: shadow(),
+        ),
+        padding: EdgeInsets.symmetric(
+          horizontal: Get.width * .05,
+        ),
+        margin: EdgeInsets.symmetric(
+          vertical: Get.height * .1,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: const [
+            AutoSizeText(
+              'درباره مکتب یادگیری تجربی چه می‌دانیم؟',
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 36.0,
+              ),
             ),
-          ),
-          AutoSizeText(
-            'چرا آموزش‌های سنتی ممکن است منجر به افسردگی در کودکان‌مان شود؟',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 32.0,
+            AutoSizeText(
+              'درباره مکتبی که بین زندگی روزمره و درک ارتباط برقرار می‌کند ',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 32.0,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
